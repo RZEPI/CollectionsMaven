@@ -1,7 +1,6 @@
 import java.util.*;
 public class Mage implements Comparable<Mage> {
     private static int type;
-    private static final MagesComparePower alternativeCompare = new MagesComparePower();
     private final String  name;
     private final int level;
     private final double power;
@@ -17,7 +16,7 @@ public class Mage implements Comparable<Mage> {
         this.setCollections();
     }
 
-    public void setCollections()
+    private void setCollections()
     {
         if (type == 0)
         {
@@ -31,8 +30,8 @@ public class Mage implements Comparable<Mage> {
         }
         else
         {
-            this.apprentices = new TreeSet<Mage>(alternativeCompare);
-            this.statistics = new TreeMap<Mage, Integer>(alternativeCompare);
+            this.apprentices = new TreeSet<Mage>(new MagesComparePower());
+            this.statistics = new TreeMap<Mage, Integer>(new MagesComparePower());
         }
     }
 
