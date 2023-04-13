@@ -8,6 +8,7 @@ public class Mage implements Comparable<Mage> {
     private Set<Mage> apprentices;
     private Map<Mage,Integer> statistics;
 
+
     public Mage(String name, int level, double power)
     {
         this.name = name;
@@ -64,7 +65,7 @@ public class Mage implements Comparable<Mage> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, level, power, apprentices);
+        return Objects.hash(name, level, power);
     }
 
     @Override
@@ -93,7 +94,10 @@ public class Mage implements Comparable<Mage> {
 
     public void printStats()
     {
-        System.out.println(statistics);
+        System.out.println(this.name + ' ' + this.statistics.get(this) + '\n');
+        for (Mage mage: this.apprentices) {
+            mage.printStats();
+        }
     }
 
     public int countStats()
